@@ -1,9 +1,16 @@
 <div class="search">
-<label for=""> Search
-    <input type="text" [formControl]="query">
-</label>
-<button (click)= "OnClick()">Submit</button>
+  <label for="">
+    Search
+    <input type="text" [formControl]="query" />
+  </label>
+  <div class="bttn">
+    <button (click)="OnClick()">Submit</button>
+  </div>
 </div>
-<div>
-    {{items[0].title}}
+<div class="lists">
+  <div *ngFor="let item of items" class="collections">
+    <img [src]="item.thumb" />
+    <span>{{ item.title }}</span>
+    <span>{{ item.subtitle }}</span>
+  </div>
 </div>

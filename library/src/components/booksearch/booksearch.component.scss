@@ -1,13 +1,33 @@
-label{
-    font-size: 25px;
-    width: 100%;
+label {
+  font-size: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+  line-height: 30px;
+  input {
+    height: 25px;
+    width: 200px;
+  }
+}
+.bttn {
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+.lists {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  .collections {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
-    margin-top: 50px;
-    line-height: 30px;
-    input{
-        height: 25px;
-        width: 200px;
+    align-items: center;
+    img {
+      height: 300px;
+      width: 300px;
     }
+  }
 }

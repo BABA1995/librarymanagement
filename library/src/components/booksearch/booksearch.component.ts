@@ -10,21 +10,17 @@ import { BookService } from '../book.service';
 export class BooksearchComponent implements OnInit {
   query: FormControl = new FormControl();
   items: any = [];
-  img: any;
-  title: any;
-  subtitle: any;
-  thumb: any;
   constructor(private book: BookService) {}
-
   ngOnInit(): void {}
   OnClick() {
     this.book.get(this.query.value).subscribe((result: any) => {
-      console.log(result.items);
-      var listitems = result.items.map((o: any) => {
-        return o.volumeInfo;
+      this.items = result.items.map((o: any) => {
+        return {
+          thumb: o.volumeInfo.imageLinks.smallThumbnail,
+          title: o.volumeInfo.title,
+          subtitle: o.volumeInfo.subtitle,
+        };
       });
-      this.items.push(listitems);
     });
-    console.log(this.items);
   }
 }
