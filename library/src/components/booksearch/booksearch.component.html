@@ -3,14 +3,50 @@
     Search
     <input type="text" [formControl]="query" />
   </label>
+  <span *ngIf="list">Total Avaliable Books: {{ items.length }} </span>
   <div class="bttn">
     <button (click)="OnClick()">Submit</button>
   </div>
 </div>
-<div class="lists">
+<div class="lists" *ngIf="list">
   <div *ngFor="let item of items" class="collections">
     <img [src]="item.thumb" />
     <span>{{ item.title }}</span>
     <span>{{ item.subtitle }}</span>
+    <button
+      type="submit"
+      (click)="onLend(item)"
+    >
+      Lend the Book
+    </button>
   </div>
+</div>
+
+<div *ngIf="info">
+  <img [src]="lendItems.a" />
+  <span>{{ lendItems.b }}</span>
+  <span>{{ lendItems.c }}</span>
+  <h3>Pls fill out the form to lend the book</h3>
+  <form [formGroup]="lendInfo" (ngSubmit)="onRent()">
+    <label
+      >Username
+      <input
+        type="text"
+        formControlName="userName"
+      />
+    </label>
+    <label for="">
+      Membership No.
+      <input type="number" formControlName="memebershipNo" />
+    </label>
+    <label>
+      Duration of Rental
+      <input type="number" formControlName="rentalDuration" />
+    </label>
+    <label>
+      Return Date
+      <input type="Date" formControlName="returnDate" />
+    </label>
+    <button type="submit">Lend</button>
+  </form>
 </div>
